@@ -26,7 +26,7 @@ if (!app.Environment.IsProduction())
     app.UseHttpsRedirection();
 }
 
-var summaries = new[]s
+var summaries = new[]
 {
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
