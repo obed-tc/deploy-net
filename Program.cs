@@ -1,16 +1,18 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Obtener el puerto desde la variable de entorno de Render
-var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";  // Default to 5000 if not provided
+
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
 
 var app = builder.Build();
 
-// Configurar la aplicación para escuchar en el puerto asignado por Render
+// Configurar la aplicación para escuchar en el puerto asignado
 app.Urls.Add($"http://*:{port}");
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -19,13 +21,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// Solo usar HTTPS redirection fuera del entorno de producción
 if (!app.Environment.IsProduction())
 {
     app.UseHttpsRedirection();
 }
 
-var summaries = new[]
+var summaries = new[]s
 {
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
