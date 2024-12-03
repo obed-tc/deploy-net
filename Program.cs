@@ -5,7 +5,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+
 var app = builder.Build();
+
+// Configurar la aplicación para escuchar en el puerto asignado
+app.Urls.Add($"http://*:{port}");
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
