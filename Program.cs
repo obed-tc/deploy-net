@@ -4,21 +4,21 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.WebHost.UseUrls("http://*:80", "https://*:443");
+//builder.WebHost.UseUrls("http://*:80", "https://*:443");
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 
-if (!app.Environment.IsProduction())
-{
-    app.UseHttpsRedirection();
-}
+//if (!app.Environment.IsProduction())
+//{
+//    app.UseHttpsRedirection();
+//}
 
 
 var summaries = new[]
